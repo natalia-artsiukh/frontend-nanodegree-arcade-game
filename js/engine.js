@@ -79,7 +79,6 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
@@ -92,19 +91,13 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allStars.forEach(function(star) {
             if (star) {
-                star.update();
+                star.update(player);
             }
         });
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
         });
         player.update();
-    }
-
-    function checkCollisions() {
-        if (allEnemies.some(enemy => enemy.isCollided(player))) {
-            player.comeBack();
-        };
     }
 
     /* This function initially draws the "game level", it will then call
