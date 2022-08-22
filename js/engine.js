@@ -91,7 +91,7 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allStars.forEach(function(star) {
             if (star) {
-                star.update(player);
+                star.update();
             }
         });
         allEnemies.forEach(function(enemy) {
